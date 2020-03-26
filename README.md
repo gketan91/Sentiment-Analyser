@@ -12,4 +12,8 @@ when any negative word from the dictionary matches it returns the negative sente
 
 
 Created with Flask Framework.
+
+
+
+
 Created by:Ketan Gupta
