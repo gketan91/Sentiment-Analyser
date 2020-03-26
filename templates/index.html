@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to Online Sentiment Analysis</h1>
+<style>
+    input {
+  width: 30%;
+}
+</style>
+<form action="external" method="post">
+    <h5 style="font-family:Times New Roman;">Input Sentiment:</h5><br>
+    <dl><center><input type="text" class="form-control" style="width:30%;" name="t1" ></center></dl><br>
+    <button class="btn-lg btn-success" type="submit">Click Me</button>
+    {% if d=="Negative" %}
+    <h1 style="color:red;">It's a {{d}} Sentiment</h1>
+    {% elif d=="Positive" %}
+    <h1 style="color:blue;">It's a {{d}} Sentiment</h1>
+    {% else %}
+    <h1>Its a Sentiment</h1>
+    {% endif %}
+</form>
+
+
+
+
+
+
+{% endblock %}
