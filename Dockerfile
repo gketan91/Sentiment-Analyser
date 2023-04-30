@@ -1,5 +1,6 @@
-FROM python
-RUN pip install flask
+FROM python:3.7
 WORKDIR /app
+RUN pip install flas
 COPY . /app
-ENTRYPOINT [ "python" , "index.py" ]
+EXPOSE 5000
+CMD ["python", "app.py"]
