@@ -3,4 +3,4 @@ WORKDIR /app
 RUN pip install flask
 COPY . /app
 EXPOSE 5000
-CMD ["python", "inde.py"]
+CMD ["python", "index.py"]
