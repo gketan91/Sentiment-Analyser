@@ -1,6 +1,7 @@
 FROM python:3.7
-WORKDIR /app
-RUN pip install flask
-COPY . /app
-EXPOSE 5000
-CMD python /app/index.py runserver 0.0.0.0:5000
+WORKDIR /app/backend
+COPY requirements.txt /app/backend
+RUN pip install -r requirements.txt
+COPY . /app/backend
+EXPOSE 8000
+CMD python /app/backend/manage.py runserver 0.0.0.0:8000
