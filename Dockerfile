@@ -5,4 +5,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 CMD python3 -m venv venv
 CMD source venv/bin/activate
-CMD gunicorn -b 0.0.0.0:8000 index:index
+CMD gunicorn -b 0.0.0.0:8000 app:app
