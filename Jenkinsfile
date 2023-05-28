@@ -4,6 +4,7 @@ pipeline {
    environment {
        DOCKER_HUB_REPO = "gketan91/sentiment-webapp:${BUILD_NUMBER}"
        CONTAINER_NAME = "senti1"
+       DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
  
    }
   
@@ -27,6 +28,18 @@ pipeline {
                sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
            }
        }
+       stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+        stage('Push') {
+
+			steps {
+				sh 'docker push gketan91/$DOCKER_HUB_REPO:latest'
+			}
+		}
 	   stage('Deploy') {
            steps {
                echo 'Deploying....'
@@ -36,4 +49,11 @@ pipeline {
        }
 
    }
+
+   post {
+		always {
+			sh 'docker logout'
+		}
+	}
+
 }
