@@ -2,7 +2,7 @@ pipeline {
    agent any
   
    environment {
-       DOCKER_HUB_REPO = "gketan91/flask-hello-world"
+       DOCKER_HUB_REPO = "gketan91/sentiment-webapp:${BUILD_NUMBER}"
        CONTAINER_NAME = "senti1"
  
    }
