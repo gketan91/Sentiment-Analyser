@@ -37,7 +37,7 @@ pipeline {
         stage('Push') {
 
 			steps {
-				sh 'docker push gketan91/$DOCKER_HUB_REPO:latest'
+				sh 'docker push $DOCKER_HUB_REPO:latest'
 			}
 		}
 	   stage('Deploy') {
