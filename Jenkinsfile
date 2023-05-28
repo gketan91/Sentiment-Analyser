@@ -3,7 +3,7 @@ pipeline {
   
    environment {
        DOCKER_HUB_REPO = "gketan91/flask-hello-world"
-       CONTAINER_NAME = "senti2"
+       CONTAINER_NAME = "senti1"
  
    }
   
