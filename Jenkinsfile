@@ -22,8 +22,8 @@ pipeline {
        stage('STOP RUNNING DOCKER IMAGES'){
             steps{
                 echo 'Stoping running images'
-                sh 'docker stop $CONTAINER_NAME'
-                sh 'docker rm $(docker ps --filter status=exited -q)'
+//                 sh 'docker stop $CONTAINER_NAME'
+//                 sh 'docker rm $(docker ps --filter status=exited -q)'
 // 		sh 'docker rmi $(docker images -a -q)'
             }
        }
