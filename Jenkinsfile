@@ -1,18 +1,30 @@
 pipeline {
-    agent any
+   agent any
+  
+   environment {
+       DOCKER_HUB_REPO = "gketan91/flask-hello-world"
+       CONTAINER_NAME = "senti2"
+ 
+   }
+  
+   stages {
+       stage('Checkout') {
+           steps {
+               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gketan91/Sentiment-Analyser.git']])
+           }
+       }
+       stage('Build') {
+           steps {
+               echo 'Building..'
+               sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
+           }
+       }
+	   stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+               sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+           }
+       }
 
-    stages {
-        stage('Get Source') {
-            git ('https://github.com/gketan91/Sentiment-Analyser.git')
-            if (!fileExists("Dockerfile")) {
-                error('Dockerfile missing.')
-                }
-         }
-         stage('Build Docker') {
-            sh "sudo docker build -t flask-app ."
-            }
-        stage("run docker container"){
-        sh "sudo docker run -p 8000:8000 --name flask-app -d flask-app "
-        }
-    }
+   }
 }
