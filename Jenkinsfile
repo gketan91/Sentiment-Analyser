@@ -9,6 +9,11 @@ pipeline {
    }
   
    stages {
+    stage('cleanWorkspace') {
+           steps {
+               cleanWs()
+           }
+       }
        stage('Checkout') {
            steps {
                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gketan91/Sentiment-Analyser.git']])
