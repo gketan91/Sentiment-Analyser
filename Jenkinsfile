@@ -18,6 +18,7 @@ pipeline {
                 echo 'Stoping running images'
                 sh 'docker stop $CONTAINER_NAME'
                 sh 'docker rm $(docker ps --filter status=exited -q)'
+		    
             }
        }
        stage('Build') {
