@@ -19,7 +19,7 @@ jobs:
       - run:
           name: INSTALL NGINX
           command: |
-            sudo apt-get install nginx
+            apt-get install nginx
 
 
       - run:
