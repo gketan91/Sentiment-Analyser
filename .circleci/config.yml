@@ -13,7 +13,8 @@ jobs:
           command: |
             pip install -r requirements.txt
 
+
       - run:
           name: Build Docker image
           command: |
-            python app.py
+            docker build -t myflaskapp .
