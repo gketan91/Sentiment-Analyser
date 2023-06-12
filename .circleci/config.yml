@@ -15,7 +15,7 @@ jobs:
             pip install \
               docker-compose==1.12.0 \
               awscli==1.11.76
-              nginx:latest
+              
       - run:
           name: Build application Docker image
           command: |
@@ -24,4 +24,4 @@ jobs:
       - run:
           name: DEPLOY application Docker image
           command: |
-            docker run -d -p 8080:8000 --name flaskapp app
+            docker run -d -p 80:8000 --name flaskapp app
