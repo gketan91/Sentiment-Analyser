@@ -24,4 +24,4 @@ jobs:
       - run:
           name: DEPLOY application Docker image
           command: |
-            docker run -d -p 8000:8000 --name flaskapp app
+            docker run -d -p 8080:8000 --name flaskapp app
