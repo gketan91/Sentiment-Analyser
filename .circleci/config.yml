@@ -16,10 +16,4 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t ${CIRCLE_BUILD_NUM}:latest .
-
-      - deploy:
-          name: Deploy to Heroku
-          command: |
-			docker run -d -p 8000:8000 --name sent1 ${CIRCLE_BUILD_NUM}
-            
+            python app.py
