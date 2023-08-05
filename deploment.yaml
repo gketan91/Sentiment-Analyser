@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: nginx-deployment
 spec:
   selector:
-    app: MyApp
+    app: nginx
   ports:
     - protocol: TCP
       port: 80
