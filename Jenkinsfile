@@ -48,7 +48,7 @@ pipeline {
 	   stage('Deploy') {
            steps {
                echo 'Deploying....'
-               sh 'docker run -d -p 8000:8000 --name $DOCKER_HUB_REPO $DOCKER_HUB_REPO'
+               sh 'docker run -d -p 8000:8000 --name ${BUILD_NUMBER} $DOCKER_HUB_REPO'
            }
        }
 
