@@ -5,6 +5,7 @@ pipeline {
        DOCKER_HUB_REPO = "gketan91/sentiment-webapp${BUILD_NUMBER}"
        CONTAINER_NAME = "senti1"
        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
+       SCANNER_HOME=tool 'sonar-scanner'
  
    }
   
@@ -22,11 +23,20 @@ pipeline {
        stage('STOP RUNNING DOCKER IMAGES'){
             steps{
                 echo 'Stoping running images'
-                sh 'docker stop $CONTAINER_NAME'
-                sh 'docker rm $(docker ps --filter status=exited -q)'
-		sh 'docker rmi $(docker images -a -q)'
+        //         sh 'docker stop $CONTAINER_NAME'
+        //         sh 'docker rm $(docker ps --filter status=exited -q)'
+		// sh 'docker rmi $(docker images -a -q)'
             }
        }
+       stage('SonarQube Analysis') {
+			steps{
+                withSonarQubeEnv('sonar-server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=senti \
+                    -Dsonar.projectKey=senti  '''
+                }
+            }
+
+		}
        stage('Build') {
            steps {
                echo 'Building..'
@@ -45,12 +55,14 @@ pipeline {
 				sh 'docker push $DOCKER_HUB_REPO:latest'
 			}
 		}
-	   stage('Deploy') {
-           steps {
-               echo 'Deploying....'
-               sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
-           }
-       }
+        
+	//    stage('Deploy') {
+    //        steps {
+    //            echo 'Deploying....'
+    //            sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+    //        }
+    //    }
+
 
    }
 
