@@ -3,7 +3,7 @@ pipeline {
   
    environment {
        DOCKER_HUB_REPO = "gketan91/sentiment-webapp${BUILD_NUMBER}"
-       CONTAINER_NAME = "senti1"
+       CONTAINER_NAME = "senti1${BUILD_NUMBER}"
        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
  
    }
@@ -48,7 +48,7 @@ pipeline {
 	   stage('Deploy') {
            steps {
                echo 'Deploying....'
-               sh 'docker run -d -p 8000:8000 --name ${BUILD_NUMBER} $DOCKER_HUB_REPO'
+               sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
            }
        }
 
