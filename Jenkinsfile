@@ -15,7 +15,7 @@ pipeline {
                cleanWs()
            }
        }
-       stage('Checkout') {
+       stage(' Git Checkout') {
            steps {
                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gketan91/Sentiment-Analyser.git']])
            }
@@ -37,6 +37,13 @@ pipeline {
             }
 
 		}
+        stage("quality gate"){
+           steps {
+                script {
+                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                }
+            } 
+        }
        stage('Build') {
            steps {
                echo 'Building..'
