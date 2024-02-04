@@ -3,7 +3,7 @@ pipeline {
   
    environment {
        DOCKER_HUB_REPO = "gketan91/sentiment-webapp${BUILD_NUMBER}"
-       CONTAINER_NAME = "senti1${BUILD_NUMBER}"
+       CONTAINER_NAME = "senti1"
        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
  
    }
