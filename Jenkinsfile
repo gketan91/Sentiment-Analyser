@@ -6,6 +6,10 @@ pipeline {
        CONTAINER_NAME = "senti1"
        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
    }
+      tools {
+       // Assuming 'SonarQubeScanner' is the name of your SonarQube scanner installation in Jenkins
+       sonarQubeScanner 'SonarQubeScanner'
+   }
   
    stages {
     stage('cleanWorkspace') {
@@ -34,12 +38,11 @@ pipeline {
        }
        stage('SonarQube Analysis') {
            steps {
-               echo 'Running SonarQube Analysis..'
-               def scannerHome = tool 'sonar-server';
-               withSonarQubeEnv() {
-                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sanar"
-               }
-           }
+            echo 'Running SonarQube Analysis..'
+            withSonarQubeEnv('My SonarQube Server') { // replace with your SonarQube server's installation name
+                sh 'sonar-scanner -Dsonar.projectKey=sanar'
+            }
+        }
        }
        stage('Login') {
 			steps {
