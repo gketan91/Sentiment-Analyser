@@ -33,12 +33,12 @@ pipeline {
            }
        }
        stage('SonarQube Analysis') {
-           steps {
-            echo 'Running SonarQube Analysis..'
-            def scannerHome = tool 'sonar-server'
-            withSonarQubeEnv('My SonarQube Server') { // replace with your SonarQube server's installation name
-                sh 'sonar-scanner -Dsonar.projectKey=sanar'
-            }
+           script {
+                    // Replace '/path/to/sonar-scanner' with the actual path
+                    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+                }
         }
        }
        stage('Login') {
