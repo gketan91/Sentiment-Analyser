@@ -8,7 +8,7 @@ pipeline {
    }
       tools {
        // Assuming 'SonarQubeScanner' is the name of your SonarQube scanner installation in Jenkins
-       sonarQubeScanner 'SonarQubeScanner'
+       sonarQubeScanner 'sonar-server'
    }
   
    stages {
