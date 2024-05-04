@@ -17,7 +17,7 @@ pipeline {
        }
        stage(' Git Checkout') {
            steps {
-               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gketan91/Sentiment-Analyser.git']])
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gketan91/Sentiment-Analyser.git']])
            }
        }
        stage('STOP RUNNING DOCKER IMAGES'){
