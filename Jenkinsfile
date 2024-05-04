@@ -23,9 +23,9 @@ pipeline {
        stage('STOP RUNNING DOCKER IMAGES'){
             steps{
                 echo 'Stoping running images'
-        //         sh 'docker stop $CONTAINER_NAME'
-        //         sh 'docker rm $(docker ps --filter status=exited -q)'
-		// sh 'docker rmi $(docker images -a -q)'
+                sh 'docker stop $CONTAINER_NAME'
+                sh 'docker rm $(docker ps --filter status=exited -q)'
+		sh 'docker rmi $(docker images -a -q)'
             }
        }
        stage('SonarQube Analysis') {
@@ -67,7 +67,7 @@ pipeline {
                sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
            }
        }
-       
+
 
 
    }
