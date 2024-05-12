@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sentiment
-        image: gketan91/sentiment-analyser:latest
+        image: nginx
         ports:
         - containerPort: 80
 ---
