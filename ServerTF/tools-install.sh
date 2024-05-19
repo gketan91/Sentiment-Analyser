@@ -77,7 +77,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 
 # #CREATING EKS CLUSTER
 # eksctl create cluster --name Three-Tier-K8s-EKS-Cluster --region ap-south-1 --node-type t2.micro --nodes-min 2 --nodes-max 2
-# aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
+aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
 
 
 #INSTALLING ADGO CD
