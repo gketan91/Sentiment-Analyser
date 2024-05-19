@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "ap-south-1"
-}
+
 
 module "eks_cluster" {
   source          = "terraform-aws-modules/eks/aws"
