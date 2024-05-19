@@ -69,15 +69,15 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 
 
-#STOPING JENKINS
-systemctl stop jenkins
-aws s3 cp s3://jenkinsfilebucket/jankins-backup.tar jankins-backup.tar.gz
-tar -zxvf jankins-backup.tar.gz -C /
-systemctl start jenkins
+# #STOPING JENKINS
+# systemctl stop jenkins
+# aws s3 cp s3://jenkinsfilebucket/jankins-backup.tar jankins-backup.tar.gz
+# tar -zxvf jankins-backup.tar.gz -C /
+# systemctl start jenkins
 
-#CREATING EKS CLUSTER
-eksctl create cluster --name Three-Tier-K8s-EKS-Cluster --region ap-south-1 --node-type t2.medium --nodes-min 2 --nodes-max 2
-aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
+# #CREATING EKS CLUSTER
+# eksctl create cluster --name Three-Tier-K8s-EKS-Cluster --region ap-south-1 --node-type t2.micro --nodes-min 2 --nodes-max 2
+# aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
 
 
 #INSTALLING ADGO CD

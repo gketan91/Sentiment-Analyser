@@ -7,3 +7,14 @@ SERVERTFAZURE/.terraform/providers/registry.terraform.io/hashicorp/azurerm/2.99.
 SERVERTFAZURE/.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.101.0/windows_386/LICENSE
 SERVERTFAZURE/.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.101.0/windows_386/terraform-provider-azurerm_v3.101.0_x5.exe
 SERVERTFAZURE/.terraform/providers/registry.terraform.io/hashicorp/random/3.6.1/windows_386/terraform-provider-random_v3.6.1_x5.exe
+*.kms
+ServerTF/.terraform/modules/eks/
+ServerTF/.terraform/modules/eks_cluster/
+ServerTF/.terraform/modules/modules.json
+ServerTF/.terraform/providers/registry.terraform.io/hashicorp/cloudinit/2.3.4/windows_386/terraform-provider-cloudinit_v2.3.4_x5.exe
+ServerTF/.terraform/providers/registry.terraform.io/hashicorp/cloudinit/2.3.4/windows_386/LICENSE
+ServerTF/.terraform/providers/registry.terraform.io/hashicorp/time/0.11.1/windows_386/terraform-provider-time_v0.11.1_x5.exe
+*.exe
+*.tfstate
+*.backup
+ServerTF/terraform.tfstate.backup
