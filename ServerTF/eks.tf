@@ -47,6 +47,7 @@ module "eks" {
 
       instance_types = ["t2.medium"]
       capacity_type  = "SPOT"
+      security_groups = ["My-CustomSG"]
     }
   }
 
