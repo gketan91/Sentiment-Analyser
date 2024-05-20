@@ -69,7 +69,7 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 
 
-# #STOPING JENKINS
+#STOPING JENKINS
 # systemctl stop jenkins
 # aws s3 cp s3://jenkinsfilebucket/jankins-backup.tar jankins-backup.tar.gz
 # tar -zxvf jankins-backup.tar.gz -C /
@@ -82,7 +82,7 @@ aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
 
 #INSTALLING ADGO CD
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+# kubectl port-forward svc/argocd-server -n argocd 8080:443
+# kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0
