@@ -2,7 +2,7 @@ pipeline {
    agent any
   
    environment {
-       DOCKER_HUB_REPO = "gketan91/sentiment-webapp${BUILD_NUMBER}"
+       DOCKER_HUB_REPO = "gketan91/sentiment-webapp"
        CONTAINER_NAME = "senti1"
        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-gketan91')
        SCANNER_HOME=tool 'sonar-scanner'
