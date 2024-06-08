@@ -4,7 +4,7 @@
 #   source          = "terraform-aws-modules/eks/aws"
 #   cluster_name    = "Three-Tier-K8s-EKS-Cluster"
 #   cluster_version = "1.28"
-#   vpc_id          = "vpc-09320ee98f724a391"
+#   vpc_id          = "vpc-039ddf21eb0d40a2a"
 #   subnet_ids = [ "subnet-01d7fef9db2aee366","subnet-0b08c43fa9ed19ed1","subnet-08880c5551fe2cae3"]
 # }
 
@@ -30,15 +30,15 @@ module "eks" {
     }
   }
 
-  vpc_id                   = "vpc-09320ee98f724a391"
-  subnet_ids               = ["subnet-01d7fef9db2aee366","subnet-0b08c43fa9ed19ed1","subnet-08880c5551fe2cae3"]
-  control_plane_subnet_ids = ["subnet-01d7fef9db2aee366","subnet-0b08c43fa9ed19ed1","subnet-08880c5551fe2cae3"]
+  vpc_id                   = "vpc-039ddf21eb0d40a2a"
+  subnet_ids               = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
+  control_plane_subnet_ids = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
 
 
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
     instance_types = ["t2.medium"]
-    vpc_id =  "vpc-09320ee98f724a391"
+    vpc_id =  "vpc-039ddf21eb0d40a2a"
     security_groups = ["My-CustomSG"]
   }
 
