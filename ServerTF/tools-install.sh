@@ -69,6 +69,10 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 
 
+
+# sudo docker run --privileged -d --restart=unless-stopped -p 8001:80 -p 8001:443 rancher/rancher
+
+
 #STOPING JENKINS
 # systemctl stop jenkins
 # aws s3 cp s3://jenkinsfilebucket/jankins-backup.tar jankins-backup.tar.gz

@@ -32,8 +32,9 @@ BRANCH - MAIN
 SONAR SERVER 
 NEW PROJECT CREATE TOKEN
 
-systemctl stop jenkins
+
 aws s3 cp s3://jenkinsfilebucket/jankins-backup.tar jankins-backup.tar.gz
+systemctl stop jenkins
 tar -zxvf jankins-backup.tar.gz -C /
 systemctl start jenkins
 

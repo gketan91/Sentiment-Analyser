@@ -16,6 +16,10 @@ module "eks" {
   cluster_name    = "Three-Tier-K8s-EKS-Cluster"
   cluster_version = "1.29"
 
+  vpc_id = "vpc-039ddf21eb0d40a2a"
+  subnet_ids   = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
+  control_plane_subnet_ids = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
+
   cluster_endpoint_public_access  = true
 
   cluster_addons = {
@@ -27,12 +31,13 @@ module "eks" {
     }
     vpc-cni = {
       most_recent = true
+
     }
+
   }
 
-  vpc_id                   = "vpc-039ddf21eb0d40a2a"
-  subnet_ids               = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
-  control_plane_subnet_ids = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
+      
+      
 
 
   # EKS Managed Node Group(s)
