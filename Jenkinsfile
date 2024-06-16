@@ -80,8 +80,9 @@ pipeline {
 	   stage('Deploy') {
            steps {
                echo 'Deploying....'
+               sh """kubectl rollout restart deployment sentiment-deployment -n senti"""
             //    sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
-            kubectl rollout restart deployment sentiment-deployment -n senti
+            
            }
        }
 
