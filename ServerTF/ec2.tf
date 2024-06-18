@@ -6,20 +6,20 @@ provider "aws" {
 
 resource "aws_instance" "jenkins_server" {
   ami           = "ami-03f4878755434977f"
-  instance_type = "t2.large"
+  instance_type = "t2.xlarge"
   key_name      = "webserverkeypair"
   user_data = templatefile("./tools-install.sh", {})
   security_groups = [ "My-CustomSG" ]
   tags = {
     Name = "JenkinsServer"
   }
-  ebs_block_device {
-    device_name = "/dev/sda1"  # Adjust if your root device is different
-    volume_size = 16          # Increase size to 16 GiB
+  # ebs_block_device {
+  #   device_name = "/dev/sda1"  # Adjust if your root device is different
+  #   volume_size = 16          # Increase size to 16 GiB
 
-    # Reference the existing volume (optional, if volume already exists)
-    # volume_id = aws_ebs_volume.jenkins_data.id
-  }
+  #   # Reference the existing volume (optional, if volume already exists)
+  #   # volume_id = aws_ebs_volume.jenkins_data.id
+  # }
 }
 
 resource "aws_iam_role" "cluster_role" {
