@@ -21,3 +21,6 @@ ServerTF/terraform.tfstate.backup
 ServerTF/.terraform/providers/registry.terraform.io/hashicorp/aws/5.50.0/windows_386/terraform-provider-aws_v5.50.0_x5.exe
 ServerTF/ec2.tf
 ServerTF/terraform.tfstate
+ServerTF/.terraform.tfstate.lock.info
+ServerTF/terraform.tfstate
+ServerTF/terraform.tfstate.backup

@@ -57,7 +57,7 @@ eksctl delete cluster --name Three-Tier-K8s-EKS-Cluster --region ap-south-1
 CONFIGURE ARGO CD
 RANCHER
 1)ADD jenkins
-
+aws configure
 aws s3 cp s3://jenkinsfilea/jankins-backup.tar jankins-backup.tar.gz
 systemctl stop jenkins
 tar -zxvf jankins-backup.tar.gz -C /
@@ -70,6 +70,7 @@ systemctl start jenkins
 1) ADD ACCESS
 AmazonEKSAdminPolicy
 AmazonEKSClusterAdminPolicy
+aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
 
 1) ARGOCD INTEGRATION WITH PIPELINE
 kubectl create namespace argocd
