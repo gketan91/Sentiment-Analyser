@@ -78,27 +78,17 @@ pipeline {
 		}
         
 	   stage('Deploy') {
-  steps {
-    echo 'Deploying...'
-
-    // Configure AWS credentials securely using Credentials Plugin
-    withCredentials([usernamePassword(credentialsId: 'aws-cli-credential-id', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-      sh """
-        // Set AWS credentials as environment variables
-        export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-        export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-
-        // Update kubeconfig (assuming you don't need additional AWS commands)
-        aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
-
-        // Perform Kubernetes deployment using kubectl
-        kubectl rollout restart deployment sentiment-deployment -n senti
-      """
-    }
-
-    // Uncomment and adjust if you need to run a Docker container (replace placeholders)
-    // sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
-  }
+        steps {
+            withCredentials([usernamePassword(credentialsId: 'aws-cli-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                sh """ # Use environment variables for AWS credentials
+                aws configure set aws_access_key_id \${AWS_ACCESS_KEY_ID}
+                aws configure set aws_secret_access_key \${AWS_SECRET_ACCESS_KEY}
+                # ... rest of your AWS CLI commands
+                aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
+                kubectl rollout restart deployment sentiment-deployment -n senti
+                """
+                }
+        }
 }
 
 
