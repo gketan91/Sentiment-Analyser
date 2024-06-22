@@ -81,8 +81,7 @@ pipeline {
         steps {
             withCredentials([usernamePassword(credentialsId: 'aws-cli-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                 sh """ # Use environment variables for AWS credentials
-                aws configure set aws_access_key_id \${AWS_ACCESS_KEY_ID}
-                aws configure set aws_secret_access_key \${AWS_SECRET_ACCESS_KEY}
+               
                 # ... rest of your AWS CLI commands
                 aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
                 kubectl rollout restart deployment sentiment-deployment -n senti
