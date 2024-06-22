@@ -80,9 +80,23 @@ pipeline {
 	   stage('Deploy') {
            steps {
                echo 'Deploying....'
-               sh """kubectl rollout restart deployment sentiment-deployment -n senti"""
-            //    sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+               withCredentials([usernamePassword(credentialsId: 'your-credential-id', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                sh """
+                aws configure set aws_access_key_id \${AWS_ACCESS_KEY_ID}
+                aws configure set aws_secret_access_key \${AWS_SECRET_ACCESS_KEY}
+                """
+                }
+                
             
+           }
+           steps {
+                sh """
+                aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
+                """
+           }
+           steps {
+                sh """kubectl rollout restart deployment sentiment-deployment -n senti"""
+            //    sh 'docker run -d -p 8000:8000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
            }
        }
 
