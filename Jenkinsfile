@@ -79,13 +79,12 @@ pipeline {
         
 	   stage('Deploy') {
         steps {
-            withCredentials([usernamePassword(credentialsId: 'aws-cli-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                sh """ # Use environment variables for AWS credentials
-               
-                # ... rest of your AWS CLI commands
-                aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
-                kubectl rollout restart deployment sentiment-deployment -n senti
-                """
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                // some block
+                sh 'aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster'
+                // Perform Kubernetes deployment using kubectl
+                sh 'kubectl rollout restart deployment sentiment-deployment -n senti'
+
                 }
         }
 }
