@@ -58,7 +58,7 @@ CONFIGURE ARGO CD
 RANCHER
 1)ADD jenkins
 aws configure
-aws s3 cp s3://jenkinsfilea/jankins-backup.tar jankins-backup.tar.gz
+aws s3 cp s3://jenkinsfilea/jenkins_backup.tar.gz jankins-backup.tar.gz
 systemctl stop jenkins
 tar -zxvf jankins-backup.tar.gz -C /
 systemctl start jenkins
@@ -82,3 +82,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443 --address 0.0.0.0
 PASSWORD FOR ARGO CD
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
+
+
+DELETE 
+kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

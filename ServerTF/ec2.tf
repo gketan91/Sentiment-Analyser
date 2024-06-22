@@ -13,13 +13,13 @@ resource "aws_instance" "jenkins_server" {
   tags = {
     Name = "JenkinsServer"
   }
-  # ebs_block_device {
-  #   device_name = "/dev/sda1"  # Adjust if your root device is different
-  #   volume_size = 16          # Increase size to 16 GiB
+  ebs_block_device {
+    device_name = "/dev/sda1"  # Adjust if your root device is different
+    volume_size = 16          # Increase size to 16 GiB
 
-  #   # Reference the existing volume (optional, if volume already exists)
-  #   # volume_id = aws_ebs_volume.jenkins_data.id
-  # }
+    # Reference the existing volume (optional, if volume already exists)
+    # volume_id = aws_ebs_volume.jenkins_data.id
+  }
 }
 
 resource "aws_iam_role" "cluster_role" {
