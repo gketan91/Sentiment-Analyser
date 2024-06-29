@@ -24,3 +24,4 @@ ServerTF/terraform.tfstate
 ServerTF/.terraform.tfstate.lock.info
 ServerTF/terraform.tfstate
 ServerTF/terraform.tfstate.backup
+ServerTF/terraform.tfstate.backup
