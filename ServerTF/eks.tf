@@ -20,21 +20,21 @@ module "eks" {
   subnet_ids   = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
   control_plane_subnet_ids = ["subnet-00f6193907426233d","subnet-073139c2b6156c2cf","subnet-0cc6efd16f1e9981a"]
 
-  cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access  = false
 
-  cluster_addons = {
-    coredns = {
-      most_recent = true
-    }
-    kube-proxy = {
-      most_recent = true
-    }
-    vpc-cni = {
-      most_recent = true
+  # cluster_addons = {
+  #   # coredns = {
+  #   #   most_recent = false
+  #   # }
+  #   # kube-proxy = {
+  #   #   most_recent = false
+  #   # }
+  #   # vpc-cni = {
+  #   #   most_recent = false
 
-    }
+  #   # }
 
-  }
+  # }
 
       
       
@@ -73,7 +73,7 @@ module "eks" {
         example = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = {
-            namespaces = ["default"]
+            namespaces = ["*"]
             type       = "namespace"
           }
         }
