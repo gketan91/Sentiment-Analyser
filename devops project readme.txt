@@ -72,6 +72,9 @@ AmazonEKSAdminPolicy
 AmazonEKSClusterAdminPolicy
 aws eks update-kubeconfig --region ap-south-1 --name Three-Tier-K8s-EKS-Cluster
 
+
+
+
 1) ARGOCD INTEGRATION WITH PIPELINE
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
